@@ -21,5 +21,9 @@ app.use('/api/user', userRouter)
 app.use('/api/owner',ownerRouter)
 app.use('/api/car', carRouter)
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+if (!process.env.VERCEL) {
+    const PORT = process.env.PORT || 3000;
+    app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+}
+
+export default app;
